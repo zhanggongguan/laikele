@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.laikele.dao.entity.mapper.StoreMapper" >
+  <resultMap id="BaseResultMap" type="com.laikele.dao.entity.Store" >
+    <id column="store_id" property="storeId" jdbcType="BIGINT" />
+    <result column="address_id" property="addressId" jdbcType="BIGINT" />
+    <result column="store" property="store" jdbcType="VARCHAR" />
+    <result column="logo_image" property="logoImage" jdbcType="VARCHAR" />
+    <result column="store_desc" property="storeDesc" jdbcType="VARCHAR" />
+    <result column="active" property="active" jdbcType="TINYINT" />
+    <result column="last_update" property="lastUpdate" jdbcType="TIMESTAMP" />
+    <result column="brand_id" property="brandId" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    store_id, address_id, store, logo_image, store_desc, active, last_update, brand_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laikele.dao.entity.StoreExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from store
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from store
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from store
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.laikele.dao.entity.StoreExample" >
+    delete from store
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.laikele.dao.entity.Store" >
+    insert into store (store_id, address_id, store, 
+      logo_image, store_desc, active, 
+      last_update, brand_id)
+    values (#{storeId,jdbcType=BIGINT}, #{addressId,jdbcType=BIGINT}, #{store,jdbcType=VARCHAR}, 
+      #{logoImage,jdbcType=VARCHAR}, #{storeDesc,jdbcType=VARCHAR}, #{active,jdbcType=TINYINT}, 
+      #{lastUpdate,jdbcType=TIMESTAMP}, #{brandId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laikele.dao.entity.Store" >
+    insert into store
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        store_id,
+      </if>
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="store != null" >
+        store,
+      </if>
+      <if test="logoImage != null" >
+        logo_image,
+      </if>
+      <if test="storeDesc != null" >
+        store_desc,
+      </if>
+      <if test="active != null" >
+        active,
+      </if>
+      <if test="lastUpdate != null" >
+        last_update,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="storeId != null" >
+        #{storeId,jdbcType=BIGINT},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=BIGINT},
+      </if>
+      <if test="store != null" >
+        #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="logoImage != null" >
+        #{logoImage,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDesc != null" >
+        #{storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=TINYINT},
+      </if>
+      <if test="lastUpdate != null" >
+        #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.laikele.dao.entity.StoreExample" resultType="java.lang.Integer" >
+    select count(*) from store
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update store
+    <set >
+      <if test="record.storeId != null" >
+        store_id = #{record.storeId,jdbcType=BIGINT},
+      </if>
+      <if test="record.addressId != null" >
+        address_id = #{record.addressId,jdbcType=BIGINT},
+      </if>
+      <if test="record.store != null" >
+        store = #{record.store,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logoImage != null" >
+        logo_image = #{record.logoImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.storeDesc != null" >
+        store_desc = #{record.storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.active != null" >
+        active = #{record.active,jdbcType=TINYINT},
+      </if>
+      <if test="record.lastUpdate != null" >
+        last_update = #{record.lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.brandId != null" >
+        brand_id = #{record.brandId,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update store
+    set store_id = #{record.storeId,jdbcType=BIGINT},
+      address_id = #{record.addressId,jdbcType=BIGINT},
+      store = #{record.store,jdbcType=VARCHAR},
+      logo_image = #{record.logoImage,jdbcType=VARCHAR},
+      store_desc = #{record.storeDesc,jdbcType=VARCHAR},
+      active = #{record.active,jdbcType=TINYINT},
+      last_update = #{record.lastUpdate,jdbcType=TIMESTAMP},
+      brand_id = #{record.brandId,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laikele.dao.entity.Store" >
+    update store
+    <set >
+      <if test="addressId != null" >
+        address_id = #{addressId,jdbcType=BIGINT},
+      </if>
+      <if test="store != null" >
+        store = #{store,jdbcType=VARCHAR},
+      </if>
+      <if test="logoImage != null" >
+        logo_image = #{logoImage,jdbcType=VARCHAR},
+      </if>
+      <if test="storeDesc != null" >
+        store_desc = #{storeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        active = #{active,jdbcType=TINYINT},
+      </if>
+      <if test="lastUpdate != null" >
+        last_update = #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laikele.dao.entity.Store" >
+    update store
+    set address_id = #{addressId,jdbcType=BIGINT},
+      store = #{store,jdbcType=VARCHAR},
+      logo_image = #{logoImage,jdbcType=VARCHAR},
+      store_desc = #{storeDesc,jdbcType=VARCHAR},
+      active = #{active,jdbcType=TINYINT},
+      last_update = #{lastUpdate,jdbcType=TIMESTAMP},
+      brand_id = #{brandId,jdbcType=BIGINT}
+    where store_id = #{storeId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.laikele.dao.entity.mapper.PromotionTipMapper" >
+  <resultMap id="BaseResultMap" type="com.laikele.dao.entity.PromotionTip" >
+    <id column="tip_id" property="tipId" jdbcType="BIGINT" />
+    <result column="tip" property="tip" jdbcType="VARCHAR" />
+    <result column="tip_desc" property="tipDesc" jdbcType="VARCHAR" />
+    <result column="tip_image" property="tipImage" jdbcType="VARCHAR" />
+    <result column="active" property="active" jdbcType="TINYINT" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="last_update" property="lastUpdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tip_id, tip, tip_desc, tip_image, active, create_date, last_update
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laikele.dao.entity.PromotionTipExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from promotion_tip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from promotion_tip
+    where tip_id = #{tipId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from promotion_tip
+    where tip_id = #{tipId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.laikele.dao.entity.PromotionTipExample" >
+    delete from promotion_tip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.laikele.dao.entity.PromotionTip" >
+    insert into promotion_tip (tip_id, tip, tip_desc, 
+      tip_image, active, create_date, 
+      last_update)
+    values (#{tipId,jdbcType=BIGINT}, #{tip,jdbcType=VARCHAR}, #{tipDesc,jdbcType=VARCHAR}, 
+      #{tipImage,jdbcType=VARCHAR}, #{active,jdbcType=TINYINT}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{lastUpdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laikele.dao.entity.PromotionTip" >
+    insert into promotion_tip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tipId != null" >
+        tip_id,
+      </if>
+      <if test="tip != null" >
+        tip,
+      </if>
+      <if test="tipDesc != null" >
+        tip_desc,
+      </if>
+      <if test="tipImage != null" >
+        tip_image,
+      </if>
+      <if test="active != null" >
+        active,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="lastUpdate != null" >
+        last_update,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tipId != null" >
+        #{tipId,jdbcType=BIGINT},
+      </if>
+      <if test="tip != null" >
+        #{tip,jdbcType=VARCHAR},
+      </if>
+      <if test="tipDesc != null" >
+        #{tipDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tipImage != null" >
+        #{tipImage,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=TINYINT},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdate != null" >
+        #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.laikele.dao.entity.PromotionTipExample" resultType="java.lang.Integer" >
+    select count(*) from promotion_tip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update promotion_tip
+    <set >
+      <if test="record.tipId != null" >
+        tip_id = #{record.tipId,jdbcType=BIGINT},
+      </if>
+      <if test="record.tip != null" >
+        tip = #{record.tip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipDesc != null" >
+        tip_desc = #{record.tipDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tipImage != null" >
+        tip_image = #{record.tipImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.active != null" >
+        active = #{record.active,jdbcType=TINYINT},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastUpdate != null" >
+        last_update = #{record.lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update promotion_tip
+    set tip_id = #{record.tipId,jdbcType=BIGINT},
+      tip = #{record.tip,jdbcType=VARCHAR},
+      tip_desc = #{record.tipDesc,jdbcType=VARCHAR},
+      tip_image = #{record.tipImage,jdbcType=VARCHAR},
+      active = #{record.active,jdbcType=TINYINT},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      last_update = #{record.lastUpdate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laikele.dao.entity.PromotionTip" >
+    update promotion_tip
+    <set >
+      <if test="tip != null" >
+        tip = #{tip,jdbcType=VARCHAR},
+      </if>
+      <if test="tipDesc != null" >
+        tip_desc = #{tipDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tipImage != null" >
+        tip_image = #{tipImage,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        active = #{active,jdbcType=TINYINT},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdate != null" >
+        last_update = #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where tip_id = #{tipId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laikele.dao.entity.PromotionTip" >
+    update promotion_tip
+    set tip = #{tip,jdbcType=VARCHAR},
+      tip_desc = #{tipDesc,jdbcType=VARCHAR},
+      tip_image = #{tipImage,jdbcType=VARCHAR},
+      active = #{active,jdbcType=TINYINT},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      last_update = #{lastUpdate,jdbcType=TIMESTAMP}
+    where tip_id = #{tipId,jdbcType=BIGINT}
+  </update>
+</mapper>
