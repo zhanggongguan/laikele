@@ -614,6 +614,66 @@ public class StoreExample {
             addCriterion("brand_id not between", value1, value2, "brandId");
             return (Criteria) this;
         }
+
+        public Criteria andZoneIdIsNull() {
+            addCriterion("zone_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdIsNotNull() {
+            addCriterion("zone_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdEqualTo(Long value) {
+            addCriterion("zone_id =", value, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdNotEqualTo(Long value) {
+            addCriterion("zone_id <>", value, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdGreaterThan(Long value) {
+            addCriterion("zone_id >", value, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("zone_id >=", value, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdLessThan(Long value) {
+            addCriterion("zone_id <", value, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdLessThanOrEqualTo(Long value) {
+            addCriterion("zone_id <=", value, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdIn(List<Long> values) {
+            addCriterion("zone_id in", values, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdNotIn(List<Long> values) {
+            addCriterion("zone_id not in", values, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdBetween(Long value1, Long value2) {
+            addCriterion("zone_id between", value1, value2, "zoneId");
+            return (Criteria) this;
+        }
+
+        public Criteria andZoneIdNotBetween(Long value1, Long value2) {
+            addCriterion("zone_id not between", value1, value2, "zoneId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

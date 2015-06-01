@@ -13,7 +13,9 @@ public class Brand {
 
     private Date lastUpdate;
 
-    private Long parentBrandId;
+    private Long categoryId;
+
+    private Byte weight;
 
     public Long getBrandId() {
         return brandId;
@@ -55,11 +57,19 @@ public class Brand {
         this.lastUpdate = lastUpdate;
     }
 
-    public Long getParentBrandId() {
-        return parentBrandId;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setParentBrandId(Long parentBrandId) {
-        this.parentBrandId = parentBrandId;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public Byte getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Byte weight) {
+        this.weight = weight;
     }
 }

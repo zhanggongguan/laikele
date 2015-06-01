@@ -9,8 +9,6 @@ public class Commodity {
 
     private String commodity;
 
-    private Long categoryId;
-
     private String commodityDesc;
 
     private String image;
@@ -22,6 +20,8 @@ public class Commodity {
     private Date createDate;
 
     private Date lastUpdate;
+
+    private Long brandId;
 
     public Long getCommodityId() {
         return commodityId;
@@ -45,14 +45,6 @@ public class Commodity {
 
     public void setCommodity(String commodity) {
         this.commodity = commodity == null ? null : commodity.trim();
-    }
-
-    public Long getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getCommodityDesc() {
@@ -101,5 +93,13 @@ public class Commodity {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Long getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Long brandId) {
+        this.brandId = brandId;
     }
 }

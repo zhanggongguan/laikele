@@ -19,6 +19,8 @@ public class Store {
 
     private Long brandId;
 
+    private Long zoneId;
+
     public Long getStoreId() {
         return storeId;
     }
@@ -81,5 +83,13 @@ public class Store {
 
     public void setBrandId(Long brandId) {
         this.brandId = brandId;
+    }
+
+    public Long getZoneId() {
+        return zoneId;
+    }
+
+    public void setZoneId(Long zoneId) {
+        this.zoneId = zoneId;
     }
 }

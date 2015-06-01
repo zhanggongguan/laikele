@@ -15,6 +15,8 @@ public class Promotion {
 
     private Date lastUpdate;
 
+    private Long zoneId;
+
     public Long getPromotionId() {
         return promotionId;
     }
@@ -61,5 +63,13 @@ public class Promotion {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Long getZoneId() {
+        return zoneId;
+    }
+
+    public void setZoneId(Long zoneId) {
+        this.zoneId = zoneId;
     }
 }
