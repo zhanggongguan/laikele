@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.laikele.dao.entity.Brand;
 import com.laikele.dao.entity.BrandExample;
 import com.laikele.dao.entity.BusinessZone;
+import com.laikele.dao.entity.BusinessZoneExample;
 import com.laikele.dao.entity.Category;
 import com.laikele.dao.entity.CategoryExample;
 import com.laikele.dao.entity.Promotion;
@@ -195,51 +196,142 @@ public class IndexService implements IIndexService {
 	@Override
 	public List<Store> selectTopOneStoreByCategoryCity(long cityID,
 			long categoryID) {
-		// TODO Auto-generated method stub
-		return null;
+		List<BusinessZone> zones = this.selectBusinessZoneByCity(cityID);
+		List<Long> zoneIDs = new ArrayList<Long>();
+		for (BusinessZone zone : zones) {
+			zoneIDs.add(zone.getZoneId());
+		}
+		List<Brand> brands = this.selectBrandByCategory(categoryID);
+		List<Long> brandIDs = new ArrayList<Long>();
+		for (Brand brand : brands) {
+			brandIDs.add(brand.getBrandId());
+		}
+
+		StoreExample example = new StoreExample();
+		com.laikele.dao.entity.StoreExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andZoneIdIn(zoneIDs);
+		criteria.andBrandIdIn(brandIDs);
+		return storeMapper.selectByExample(example);
 	}
 
 	@Override
 	public List<Store> selectTopOneStoreByCategoryZone(long zoneID,
 			long categoryID) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Brand> brands = this.selectBrandByCategory(categoryID);
+		List<Long> brandIDs = new ArrayList<Long>();
+		for (Brand brand : brands) {
+			brandIDs.add(brand.getBrandId());
+		}
+
+		StoreExample example = new StoreExample();
+		com.laikele.dao.entity.StoreExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andZoneIdEqualTo(zoneID);
+		criteria.andBrandIdIn(brandIDs);
+		return storeMapper.selectByExample(example);
 	}
 
 	@Override
 	public List<PromotionItem> selectGroupPromotionItemByZone(long zoneID) {
-		// TODO Auto-generated method stub
-		return null;
+		PromotionExample pExample = new PromotionExample();
+		Criteria pCriteria = pExample.createCriteria();
+		pCriteria.andZoneIdEqualTo(zoneID);
+		List<Promotion> promos = promotionMapper.selectByExample(pExample);
+		List<Long> promoIDs = new ArrayList<Long>();
+		for (Promotion promo : promos) {
+			promoIDs.add(promo.getPromotionId());
+		}
+
+		PromotionItemExample example = new PromotionItemExample();
+		com.laikele.dao.entity.PromotionItemExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andPromotionIdIn(promoIDs);
+		return promotionItemMapper.selectByExample(example);
 	}
 
 	@Override
 	public List<PromotionItem> selectGroupPromotionItemByCity(long cityID) {
-		// TODO Auto-generated method stub
-		return null;
+		List<BusinessZone> zones = this.selectBusinessZoneByCity(cityID);
+		List<Long> zoneIDs = new ArrayList<Long>();
+		for (BusinessZone zone : zones) {
+			zoneIDs.add(zone.getZoneId());
+		}
+		PromotionExample pExample = new PromotionExample();
+		Criteria pCriteria = pExample.createCriteria();
+		pCriteria.andZoneIdIn(zoneIDs);
+		List<Promotion> promos = promotionMapper.selectByExample(pExample);
+		List<Long> promoIDs = new ArrayList<Long>();
+		for (Promotion promo : promos) {
+			promoIDs.add(promo.getPromotionId());
+		}
+
+		PromotionItemExample example = new PromotionItemExample();
+		com.laikele.dao.entity.PromotionItemExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andPromotionIdIn(promoIDs);
+		return promotionItemMapper.selectByExample(example);
 	}
 
 	@Override
-	public List<PromotionItem> selectPromotionItemByZone(long zongID, int type) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PromotionItem> selectPromotionItemByZone(long zoneID, long type) {
+		PromotionExample pExample = new PromotionExample();
+		Criteria pCriteria = pExample.createCriteria();
+		pCriteria.andZoneIdEqualTo(zoneID);
+		List<Promotion> promos = promotionMapper.selectByExample(pExample);
+		List<Long> promoIDs = new ArrayList<Long>();
+		for (Promotion promo : promos) {
+			promoIDs.add(promo.getPromotionId());
+		}
+
+		PromotionItemExample example = new PromotionItemExample();
+		com.laikele.dao.entity.PromotionItemExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andPromotionIdIn(promoIDs);
+		criteria.andPromotionTypeIdEqualTo(type);
+		return promotionItemMapper.selectByExample(example);
 	}
 
 	@Override
-	public List<PromotionItem> selectPromotionItemByCity(long cityID, int type) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PromotionItem> selectPromotionItemByCity(long cityID, long type) {
+		List<BusinessZone> zones = this.selectBusinessZoneByCity(cityID);
+		List<Long> zoneIDs = new ArrayList<Long>();
+		for (BusinessZone zone : zones) {
+			zoneIDs.add(zone.getZoneId());
+		}
+		PromotionExample pExample = new PromotionExample();
+		Criteria pCriteria = pExample.createCriteria();
+		pCriteria.andZoneIdIn(zoneIDs);
+		List<Promotion> promos = promotionMapper.selectByExample(pExample);
+		List<Long> promoIDs = new ArrayList<Long>();
+		for (Promotion promo : promos) {
+			promoIDs.add(promo.getPromotionId());
+		}
+
+		PromotionItemExample example = new PromotionItemExample();
+		com.laikele.dao.entity.PromotionItemExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andPromotionIdIn(promoIDs);
+		criteria.andPromotionTypeIdEqualTo(type);
+		return promotionItemMapper.selectByExample(example);
 	}
 
 	@Override
 	public List<Promotion> selectPromotionByStore(long storeID) {
-		// TODO Auto-generated method stub
-		return null;
+		PromotionExample example = new PromotionExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andStoreIdEqualTo(storeID);
+
+		return promotionMapper.selectByExample(example);
 	}
 
 	@Override
 	public List<BusinessZone> selectBusinessZoneByCity(long cityID) {
-		// TODO Auto-generated method stub
-		return null;
+		BusinessZoneExample example = new BusinessZoneExample();
+		com.laikele.dao.entity.BusinessZoneExample.Criteria criteria = example
+				.createCriteria();
+		criteria.andCityIdEqualTo(cityID);
+		return businessZoneMapper.selectByExample(example);
 	}
 
 }

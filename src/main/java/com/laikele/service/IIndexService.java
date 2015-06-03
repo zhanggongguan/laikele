@@ -36,9 +36,9 @@ public interface IIndexService {
 
 	public List<Store> selectAllValidStoreByZone(long zoneID);
 
-	public List<Brand> selectTopBrandByCity(long cityID,long categoryID);
+	public List<Brand> selectTopBrandByCity(long cityID, long categoryID);
 
-	public List<Brand> selectTopBrandByZone(long zoneID,long vategoryID);
+	public List<Brand> selectTopBrandByZone(long zoneID, long vategoryID);
 
 	// 主区域四个类目查询块
 	public List<Store> selectTopOneStoreByCategoryCity(long cityID,
@@ -52,9 +52,9 @@ public interface IIndexService {
 
 	public List<PromotionItem> selectGroupPromotionItemByCity(long cityID);
 
-	public List<PromotionItem> selectPromotionItemByZone(long zongID, int type);
+	public List<PromotionItem> selectPromotionItemByZone(long zongID, long type);
 
-	public List<PromotionItem> selectPromotionItemByCity(long cityID, int type);
+	public List<PromotionItem> selectPromotionItemByCity(long cityID, long type);
 
 	public List<BusinessZone> selectBusinessZoneByCity(long cityID);
 }

@@ -6,7 +6,7 @@
 
 -  ~~首页相关接口函数定义，Promotion_type内容初始化~~
 
--  开发Service层代码，IndexService层代码开发进度：80%。
+-  ~~开发Service层代码，IndexService层代码开发进度：100%。~~
 
 -  开发左侧导航菜单底层代码.......［计划1号之前完成]
 

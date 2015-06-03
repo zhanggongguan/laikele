@@ -21,6 +21,14 @@ public class PromotionItem {
 
     private Date lastUpdate;
 
+    private Long minDiscount;
+
+    private Long price;
+
+    private String url;
+
+    private Long promotionTypeId;
+
     public Long getPromotionItemId() {
         return promotionItemId;
     }
@@ -91,5 +99,37 @@ public class PromotionItem {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public Long getMinDiscount() {
+        return minDiscount;
+    }
+
+    public void setMinDiscount(Long minDiscount) {
+        this.minDiscount = minDiscount;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
+    }
+
+    public Long getPromotionTypeId() {
+        return promotionTypeId;
+    }
+
+    public void setPromotionTypeId(Long promotionTypeId) {
+        this.promotionTypeId = promotionTypeId;
     }
 }
