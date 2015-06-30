@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.laikele.dao.entity.mapper.CityMapper" >
+<mapper namespace="com.laikele.dao.mapper.CityMapper" >
   <resultMap id="BaseResultMap" type="com.laikele.dao.entity.City" >
     <id column="city_id" property="cityId" jdbcType="BIGINT" />
     <result column="city" property="city" jdbcType="VARCHAR" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.laikele.dao.entity.mapper.StoreMapper" >
+<mapper namespace="com.laikele.dao.mapper.StoreMapper" >
   <resultMap id="BaseResultMap" type="com.laikele.dao.entity.Store" >
     <id column="store_id" property="storeId" jdbcType="BIGINT" />
     <result column="address_id" property="addressId" jdbcType="BIGINT" />
@@ -10,6 +10,7 @@
     <result column="active" property="active" jdbcType="TINYINT" />
     <result column="last_update" property="lastUpdate" jdbcType="TIMESTAMP" />
     <result column="brand_id" property="brandId" jdbcType="BIGINT" />
+    <result column="zone_id" property="zoneId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    store_id, address_id, store, logo_image, store_desc, active, last_update, brand_id
+    store_id, address_id, store, logo_image, store_desc, active, last_update, brand_id, 
+    zone_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laikele.dao.entity.StoreExample" >
     select
@@ -105,10 +107,12 @@
   <insert id="insert" parameterType="com.laikele.dao.entity.Store" >
     insert into store (store_id, address_id, store, 
       logo_image, store_desc, active, 
-      last_update, brand_id)
+      last_update, brand_id, zone_id
+      )
     values (#{storeId,jdbcType=BIGINT}, #{addressId,jdbcType=BIGINT}, #{store,jdbcType=VARCHAR}, 
       #{logoImage,jdbcType=VARCHAR}, #{storeDesc,jdbcType=VARCHAR}, #{active,jdbcType=TINYINT}, 
-      #{lastUpdate,jdbcType=TIMESTAMP}, #{brandId,jdbcType=BIGINT})
+      #{lastUpdate,jdbcType=TIMESTAMP}, #{brandId,jdbcType=BIGINT}, #{zoneId,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.laikele.dao.entity.Store" >
     insert into store
@@ -137,6 +141,9 @@
       <if test="brandId != null" >
         brand_id,
       </if>
+      <if test="zoneId != null" >
+        zone_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="storeId != null" >
@@ -162,6 +169,9 @@
       </if>
       <if test="brandId != null" >
         #{brandId,jdbcType=BIGINT},
+      </if>
+      <if test="zoneId != null" >
+        #{zoneId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -198,6 +208,9 @@
       <if test="record.brandId != null" >
         brand_id = #{record.brandId,jdbcType=BIGINT},
       </if>
+      <if test="record.zoneId != null" >
+        zone_id = #{record.zoneId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +225,8 @@
       store_desc = #{record.storeDesc,jdbcType=VARCHAR},
       active = #{record.active,jdbcType=TINYINT},
       last_update = #{record.lastUpdate,jdbcType=TIMESTAMP},
-      brand_id = #{record.brandId,jdbcType=BIGINT}
+      brand_id = #{record.brandId,jdbcType=BIGINT},
+      zone_id = #{record.zoneId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -241,6 +255,9 @@
       <if test="brandId != null" >
         brand_id = #{brandId,jdbcType=BIGINT},
       </if>
+      <if test="zoneId != null" >
+        zone_id = #{zoneId,jdbcType=BIGINT},
+      </if>
     </set>
     where store_id = #{storeId,jdbcType=BIGINT}
   </update>
@@ -252,7 +269,8 @@
       store_desc = #{storeDesc,jdbcType=VARCHAR},
       active = #{active,jdbcType=TINYINT},
       last_update = #{lastUpdate,jdbcType=TIMESTAMP},
-      brand_id = #{brandId,jdbcType=BIGINT}
+      brand_id = #{brandId,jdbcType=BIGINT},
+      zone_id = #{zoneId,jdbcType=BIGINT}
     where store_id = #{storeId,jdbcType=BIGINT}
   </update>
 </mapper>

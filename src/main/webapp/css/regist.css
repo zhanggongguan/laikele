@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0;padding:0;}
+body{font-size:12px;}
+li{list-style:none;}
+
+
+
+.regist_main{
+	width:1200px;
+	padding-top:30px;
+	margin:0 auto;
+	text-align:center;}
+.dengluming{
+	color:#c23131;
+	font-family:"微软雅黑";
+	font-size:18px;	
+	font-weight:bold;
+	width:100px;
+	float:left;
+	margin-left:320px;}
+.zhanghuxinxi{
+	color:#909090;
+	font-family:"微软雅黑";
+	font-size:18px;	
+	font-weight:bold;
+	width:150px;
+	float:left;
+	margin-left:140px;}
+.regist_success{
+	color:#909090;
+	background:url(../images/regist_success.jpg) center right no-repeat;
+	font-family:"微软雅黑";
+	font-size:18px;	
+	font-weight:bold;
+	width:130px;
+	float:left;
+	margin-left:120px;}
+.regist_bg{
+	width:1200px;
+	height:10px;
+	margin-top:10px;
+	background:url(../images/regist_bg.jpg) no-repeat;}
+.regist_cont{
+	width:600px;
+	color:#3c3c3c;
+	line-height:50px;
+	font-family:"微软雅黑";
+	font-size:14px;
+	margin-top:40px;
+	margin-left:330px;
+	text-align:left;
+	}
+.regist_next{
+	width:200px;
+	height:40px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	line-height:40px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	background:#c23131;}
+.regist_next A:hover{
+	width:200px;
+	height:40px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	line-height:40px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	text-decoration:none;
+	background:#c23131;}
+.regist_next A:link{
+	width:200px;
+	height:40px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	line-height:40px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	text-decoration:none;
+	background:#c23131;}
+.regist_next A:Visited{
+	width:200px;
+	height:40px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	line-height:40px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	text-decoration:none;
+	background:#c23131;}
+.regist_next A:Active{
+	width:200px;
+	height:40px;
+	font-family:"微软雅黑";
+	font-size:16px;
+	line-height:40px;
+	text-align:center;
+	font-weight:bold;
+	color:#FFF;
+	text-decoration:none;
+	background:#c23131;}
