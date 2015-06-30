@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.laikele.dao.entity.mapper.CommodityPromotionItemMapper" >
+<mapper namespace="com.laikele.dao.mapper.CommodityPromotionItemMapper" >
   <resultMap id="BaseResultMap" type="com.laikele.dao.entity.CommodityPromotionItem" >
     <id column="commodity_id" property="commodityId" jdbcType="BIGINT" />
     <id column="promotion_item_id" property="promotionItemId" jdbcType="BIGINT" />

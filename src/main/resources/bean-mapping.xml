@@ -2,9 +2,25 @@
 <!DOCTYPE configuration
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
- 
+
 <configuration>
-  <mappers>
-    <mapper resource="beans/UserMapper.xml"/>      
-  </mappers>
+	<mappers>
+		<mapper resource="beans/UserMapper.xml" />
+		<mapper resource="beans/AddressMapper.xml" />
+		<mapper resource="beans/BrandMapper.xml" />
+		<mapper resource="beans/BusinessZoneMapper.xml" />
+		<mapper resource="beans/CategoryMapper.xml" />
+		<mapper resource="beans/BusinessZoneUserMapper.xml" />
+		<mapper resource="beans/CityMapper.xml" />
+		<mapper resource="beans/CommodityMapper.xml" />
+		<mapper resource="beans/CommodityPromotionItemMapper.xml"/>
+		<mapper resource="beans/CountryMapper.xml" />
+		<mapper resource="beans/PlaceMapper.xml" />
+		<mapper resource="beans/PromotionEffectMapper.xml" />
+		<mapper resource="beans/PromotionItemMapper.xml" />
+		<mapper resource="beans/PromotionMapper.xml" />
+		<mapper resource="beans/PromotionTipMapper.xml" />
+		<mapper resource="beans/PromotionTipsMapper.xml" />
+		<mapper resource="beans/StoreMapper.xml" />
+	</mappers>
 </configuration>

@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*选项卡1*/
+#lib_Tab1{width:772px;margin:0px;padding:0px;margin-bottom:15px;}
+/*选项卡2*/
+#lib_Tab2{width:375px;margin:0px;padding:0px;margin-bottom:15px; }
+/*菜单class*/
+.lib_tabborder{border:0px solid #f3f3f3;}
+.lib_Menubox {height:32px;line-height:28px;position:relative; font-size:16px;}
+
+.lib_Menubox ul{margin:0px;padding:0px;list-style:none; position:absolute; top:3px; left:0; margin-left:0px; height:32px;text-align:center;}
+.lib_Menubox li{float:left;display:block;cursor:pointer;width:103px;color:#c23131; border-bottom:2px solid #c23131;font-weight:bold; margin-right:2px;height:32px;line-height:32px; background-color:#fff}
+.lib_Menubox li.hover{padding:0px;background:#c23131;width:103px;border-left:0px solid #95C9E1;border-top:0px solid #95C9E1;border-right:0px solid #95C9E1;
+color:#fff;height:32px;line-height:32px;}
+.lib_Contentbox{clear:both;border:1px solid #f3f3f3; width:375px;height:300px; border-top:2px solid #c23131;margin-top:3px;text-align:left;padding-top:20px; padding-left:20px;}
+.tabneirong{
+	width:375px;
+	margin:0 auto;}
+.tabneirong1{
+	width:150px;
+	float:left;}	
+.tabneirong2{
+	width:190px;
+	float:left;}	
+	
+.tabneirong2 p{
+	width:190px;
+	line-height:27px;
+	font-family:"宋体";
+	font-size:12px;
+	color:#404040;
+	font-weight:bold;
+	float:left;}
+
+.lib_Menubox1 {height:32px;line-height:32px;position:relative; font-size:16px;}
+.lib_Menubox1 ul{margin:0px;padding:0px;list-style:none; position:absolute; top:3px; left:0; margin-left:10px; height:32px;text-align:center;}
+.lib_Menubox1 li{float:left;display:block;cursor:pointer;width:103px;color:#c23131; border-bottom:2px solid #c23131;font-weight:bold; margin-right:2px;height:32px;line-height:32px; background-color:#fff}
+.lib_Menubox1 li.hover{padding:0px;background:#c23131;width:103px;border-left:0px solid #95C9E1;border-top:0px solid #95C9E1;border-right:0px solid #95C9E1;
+color:#fff;height:32px;line-height:32px;}
+.lib_Contentbox1{clear:both;margin-top:12px; width:740px; border-top:none;height:200px; text-align:left;padding-top:8px; padding-left:20px; line-height:24px; color:#404040;}
+
+

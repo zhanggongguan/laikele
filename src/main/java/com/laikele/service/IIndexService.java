@@ -13,6 +13,8 @@ public interface IIndexService {
 	// 获取左侧顶级菜单内容
 	public List<Category> selectCategory();
 
+	public Category selectCategory(long categoryID);
+
 	// 依据类目ID，获取相关品牌内容
 	public List<Brand> selectBrandByCategory(long categoryID);
 

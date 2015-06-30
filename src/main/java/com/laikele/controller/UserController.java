@@ -13,7 +13,7 @@ import com.laikele.service.UserService;
 @Controller
 public class UserController {
 	@Autowired
-	private UserService userBiz;
+	private UserService userService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
@@ -23,14 +23,14 @@ public class UserController {
 		}
 
 		String username = model.get("username").toString();
-		User user = userBiz.selectUser(username);
+		User user = userService.selectUser(username);
 		model.addAttribute("user", user);
 		return "login";
 	}
 
 	@RequestMapping(value = "/saveuser", method = RequestMethod.POST)
 	public String saveuser(@ModelAttribute("user") User user) {
-		userBiz.saveUser(user);
+		userService.saveUser(user);
 		return "login";
 	}
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.laikele.dao.entity.mapper.PromotionMapper" >
+<mapper namespace="com.laikele.dao.mapper.PromotionMapper" >
   <resultMap id="BaseResultMap" type="com.laikele.dao.entity.Promotion" >
     <id column="promotion_id" property="promotionId" jdbcType="BIGINT" />
     <result column="store_id" property="storeId" jdbcType="BIGINT" />
@@ -8,6 +8,7 @@
     <result column="active" property="active" jdbcType="TINYINT" />
     <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
     <result column="last_update" property="lastUpdate" jdbcType="TIMESTAMP" />
+    <result column="zone_id" property="zoneId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    promotion_id, store_id, promotion, active, create_date, last_update
+    promotion_id, store_id, promotion, active, create_date, last_update, zone_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laikele.dao.entity.PromotionExample" >
     select
@@ -102,11 +103,11 @@
   </delete>
   <insert id="insert" parameterType="com.laikele.dao.entity.Promotion" >
     insert into promotion (promotion_id, store_id, promotion, 
-      active, create_date, last_update
-      )
+      active, create_date, last_update, 
+      zone_id)
     values (#{promotionId,jdbcType=BIGINT}, #{storeId,jdbcType=BIGINT}, #{promotion,jdbcType=VARCHAR}, 
-      #{active,jdbcType=TINYINT}, #{createDate,jdbcType=TIMESTAMP}, #{lastUpdate,jdbcType=TIMESTAMP}
-      )
+      #{active,jdbcType=TINYINT}, #{createDate,jdbcType=TIMESTAMP}, #{lastUpdate,jdbcType=TIMESTAMP}, 
+      #{zoneId,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.laikele.dao.entity.Promotion" >
     insert into promotion
@@ -129,6 +130,9 @@
       <if test="lastUpdate != null" >
         last_update,
       </if>
+      <if test="zoneId != null" >
+        zone_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="promotionId != null" >
@@ -148,6 +152,9 @@
       </if>
       <if test="lastUpdate != null" >
         #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zoneId != null" >
+        #{zoneId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -178,6 +185,9 @@
       <if test="record.lastUpdate != null" >
         last_update = #{record.lastUpdate,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.zoneId != null" >
+        zone_id = #{record.zoneId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -190,7 +200,8 @@
       promotion = #{record.promotion,jdbcType=VARCHAR},
       active = #{record.active,jdbcType=TINYINT},
       create_date = #{record.createDate,jdbcType=TIMESTAMP},
-      last_update = #{record.lastUpdate,jdbcType=TIMESTAMP}
+      last_update = #{record.lastUpdate,jdbcType=TIMESTAMP},
+      zone_id = #{record.zoneId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -213,6 +224,9 @@
       <if test="lastUpdate != null" >
         last_update = #{lastUpdate,jdbcType=TIMESTAMP},
       </if>
+      <if test="zoneId != null" >
+        zone_id = #{zoneId,jdbcType=BIGINT},
+      </if>
     </set>
     where promotion_id = #{promotionId,jdbcType=BIGINT}
   </update>
@@ -222,7 +236,8 @@
       promotion = #{promotion,jdbcType=VARCHAR},
       active = #{active,jdbcType=TINYINT},
       create_date = #{createDate,jdbcType=TIMESTAMP},
-      last_update = #{lastUpdate,jdbcType=TIMESTAMP}
+      last_update = #{lastUpdate,jdbcType=TIMESTAMP},
+      zone_id = #{zoneId,jdbcType=BIGINT}
     where promotion_id = #{promotionId,jdbcType=BIGINT}
   </update>
 </mapper>

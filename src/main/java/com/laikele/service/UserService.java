@@ -5,16 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.laikele.dao.entity.User;
 import com.laikele.dao.entity.UserExample;
 import com.laikele.dao.entity.UserExample.Criteria;
-import com.laikele.dao.entity.mapper.UserMapper;
+import com.laikele.dao.mapper.UserMapper;
 
-@Service
-@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+@Service("userService")
 public class UserService {
 
 	@Autowired
